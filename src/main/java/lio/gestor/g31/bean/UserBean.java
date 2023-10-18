@@ -38,7 +38,7 @@ public class UserBean {
 				
 				System.out.println(getRequest().getContextPath() + "/pages/student/students.jsf" );
 				
-				getFacesContext().getExternalContext().redirect( getRequest().getContextPath() + "pages/student/students.jsf" );
+				getFacesContext().getExternalContext().redirect( getRequest().getContextPath() + "/pages/student/students.jsf" );
 				
 			} catch (IOException e) {
 				System.out.println(e);
