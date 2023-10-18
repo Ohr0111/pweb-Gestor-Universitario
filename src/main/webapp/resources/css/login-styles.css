@@ -1,0 +1,48 @@
+body{
+	background-color: #464673;
+}
+
+input{
+	width: 100%;
+	
+}
+
+button{
+	width: 50%;
+}
+
+button:hover, input:hover{
+		
+	transform: scale(1.07);
+	
+}
+
+a{
+	font-size: 14px;
+}
+
+.fill-row{
+	width: 100%;
+	
+}
+
+.tag-title{
+	font-size: 2.5rem ! important;
+}
+
+.tag-small{
+	font-size: 14px  ! important;
+	font-style: oblique;
+	font-family: fantasy;
+}
+
+.card{
+	box-shadow: 0 4px 8px black, 0 0 8px darkgray ! important;
+}
+
+.center{
+	
+	display: flex ! important;
+	justify-content: center ! important;
+	
+}

@@ -41,7 +41,9 @@
             30
         </session-timeout>
     </session-config>
+    
  	<welcome-file-list>
-        <welcome-file>pages/main/main.jsf</welcome-file>
+        <welcome-file>pages/login/login.jsf</welcome-file>
     </welcome-file-list>
+    
 </web-app>

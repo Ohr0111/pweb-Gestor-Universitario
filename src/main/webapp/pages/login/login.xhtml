@@ -1,0 +1,98 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Login</title>
+
+ 	<h:outputStylesheet name="login-styles.css" library="css"> </h:outputStylesheet>
+	<h:outputStylesheet name="primeflex.min.css" library="css"> </h:outputStylesheet>
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+	
+		<p:spacer height="50"></p:spacer>
+
+		<div class="p-grid p-ai-center vertical-container">
+		
+		    <div class="p-col">
+			        
+			</div>
+
+			<div class="p-col">
+
+				<p:card class="card" style="width: auto">
+
+					<f:facet class="tag-title" name="title"> <p:outputLabel class="tag-title">Login</p:outputLabel> </f:facet>
+
+					<p:panelGrid columns="1" layout="grid">
+					
+						<p:spacer heigth="100px"></p:spacer>
+
+						<h:panelGroup>
+
+							<p:outputLabel for="@next" value="Usuario"></p:outputLabel>
+							<p:inputText placeholder="Usuario" value="#{userBean.username}" required="true"></p:inputText>
+							
+							
+						</h:panelGroup>
+						
+						<p:spacer heigth="60"></p:spacer>
+
+						<h:panelGroup>
+
+							<p:outputLabel for="@next" value="Contraseña"></p:outputLabel>
+							<p:password placeholder="Contraseña" required="true"></p:password>
+							<p:spacer heigth="30"></p:spacer>
+							<h:outputLink href="asd">¿Has olvidado la contraseña?.</h:outputLink>
+							
+						</h:panelGroup>
+						
+						<p:spacer height="50"></p:spacer>
+						
+
+						<h:panelGroup class="center">
+
+
+							<p:commandButton  icon="pi pi-sign-in" ajax="false"
+								action="#{userBean.login}" value="Login"></p:commandButton>
+								
+							<p:spacer width="15"></p:spacer>
+
+							<p:commandButton icon="pi pi-user-plus"
+								ajax="false" action="#{userBean.login}" value="Singin"></p:commandButton>
+
+
+						</h:panelGroup>
+						
+
+					</p:panelGrid>
+
+					<f:facet name="footer">
+					    
+					    	<p:spacer height="20"></p:spacer>
+					    	<p:outputLabel class="tag-small center">Gestor-Universitario.2023</p:outputLabel>
+					    
+						
+					</f:facet>
+
+				</p:card>
+
+			</div>
+			
+			<div class="p-col">
+			        
+			</div>
+
+		</div>
+
+	</h:form>
+
+</h:body>
+
+</html>
