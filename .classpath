@@ -52,5 +52,45 @@
 			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="D:/IDE/WEB/app/repository/org/springframework/spring-context/5.3.6/spring-context-5.3.6.jar" sourcepath="D:/IDE/WEB/app/repository/org/springframework/spring-context/5.3.6/spring-context-5.3.6-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="spring-context-5.3.6.jar"/>
+			<attribute name="maven.groupId" value="org.springframework"/>
+			<attribute name="maven.artifactId" value="spring-context"/>
+			<attribute name="maven.version" value="5.3.6"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/IDE/WEB/app/repository/org/springframework/spring-beans/5.3.6/spring-beans-5.3.6.jar" sourcepath="D:/IDE/WEB/app/repository/org/springframework/spring-beans/5.3.6/spring-beans-5.3.6-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="spring-beans-5.3.6.jar"/>
+			<attribute name="maven.groupId" value="org.springframework"/>
+			<attribute name="maven.artifactId" value="spring-beans"/>
+			<attribute name="maven.version" value="5.3.6"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/IDE/WEB/app/repository/org/springframework/spring-web/5.3.6/spring-web-5.3.6.jar" sourcepath="D:/IDE/WEB/app/repository/org/springframework/spring-web/5.3.6/spring-web-5.3.6-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="spring-web-5.3.6.jar"/>
+			<attribute name="maven.groupId" value="org.springframework"/>
+			<attribute name="maven.artifactId" value="spring-web"/>
+			<attribute name="maven.version" value="5.3.6"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/IDE/WEB/app/repository/com/sun/faces/jsf-api/2.2.20/jsf-api-2.2.20.jar" sourcepath="D:/IDE/WEB/app/repository/com/sun/faces/jsf-api/2.2.20/jsf-api-2.2.20-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="org.eclipse.jst.component.archivename" value="jsf-api-2.2.20.jar"/>
+			<attribute name="maven.groupId" value="com.sun.faces"/>
+			<attribute name="maven.artifactId" value="jsf-api"/>
+			<attribute name="maven.version" value="2.2.20"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

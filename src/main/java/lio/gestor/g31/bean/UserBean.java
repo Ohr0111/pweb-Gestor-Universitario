@@ -6,7 +6,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.context.annotation.SessionScope;
+
 @ManagedBean
+@SessionScope
 public class UserBean {
 	
 	private String username;
