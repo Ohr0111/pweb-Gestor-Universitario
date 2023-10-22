@@ -1,0 +1,169 @@
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/template/principal.xhtml">
+	
+	<ui:define name="layout">
+	
+		<h:form id="form">
+		
+			<p:toolbar class="shadow-8" style="margin-bottom: 1rem">
+			
+				<p:toolbarGroup class="p-row">
+				
+					<h1>Gestión de estudiantes</h1>
+				
+				</p:toolbarGroup>
+				
+			
+			</p:toolbar>
+			
+			<p:dataTable
+			class="shadow-8"
+			id="student-table" 
+			value="#{studentBean.student_list}"
+			widgetVar="student_t" 
+			var="student"
+			reflow="true" 
+			paginator="true"
+			rows="10" 
+			rowKey="#{student.id}"
+			selection="#{studentBean.selected_students}"
+			paginatorPosition="bottom"
+			scrollable="true">
+			
+				<f:facet name="header">
+				
+					<div class="products-table-header">
+
+						<span style="font-weight: bold">
+							<h1 style="width: 30%">Listado</h1> 
+						</span > 
+						
+						<span class="border-blue full-row">
+						
+							<span>
+							
+								<p:commandButton icon="pi pi-trash" id="delete"
+									styleClass="rounded-button ui-button-danger ui-button-flat"
+									process="@this" 
+									action="#{studentBean.deleteStudents}" >
+									<f:setPropertyActionListener value="#{student}"
+									target="#{studentBean.selected_student}" />
+									<p:confirm header="Confirmar" message="Está seguro de eliminar al estudiante?" icon="pi pi-exclamation-triangle"/>>
+								</p:commandButton>
+							
+							</span>
+						
+							<span style="width: 80%">
+							
+								<span style="width: 100%" class="filter-container ui-input-icon-right  full-right">
+								
+								<i class="pi pi-search"></i> 
+								
+								<p:inputText style="width: 85%" id="globalFilter"
+									onkeyup="PF('student_t').filter()" placeholder="Buscar" />
+									
+								</span>
+							
+							</span> 
+							
+							<span style="width: 13.5%" class="full-right">
+							
+								<p:commandButton
+									icon="pi pi-plus" 
+									id="new"
+									styleClass="rounded-button ui-button-flat"
+									style="margin-right: .5rem" 
+									actionListener="#{studentBean.newStudent}"
+									update=":form:student-manage"
+									oncomplete="PF('student-form').show()">
+									
+								</p:commandButton> 
+							
+								<p:commandButton icon="pi pi-upload" id="export"
+									styleClass="rounded-button ui-button-secondary ui-button-flat"
+									style="margin-right: .5rem"
+									ajax="false">
+									<p:dataExporter type="pdf" target="student-table" fileName="students" />
+								</p:commandButton> 
+							
+							</span>
+						
+							
+
+						</span>
+
+					</div>
+					
+				</f:facet>
+						
+				<p:column selectionMode="multiple" exportable="false"/>
+				
+				<p:column headerText="Carnet" sortBy="#{student.dni}" filterBy="#{student.dni}">
+					<h:outputText value="#{student.dni}" />
+				</p:column>
+
+				<p:column headerText="Nombre" sortBy="#{student.full_name}" filterBy="#{student.full_name}">
+					<h:outputText value="#{student.full_name}" />
+				</p:column>
+				
+				<p:column headerText="Sexo" sortBy="#{student.sex}"  filterBy="#{student.sex}">
+					<h:outputText value="#{student.sex}" />
+				</p:column>
+				
+				<p:column headerText="Número" sortBy="#{student.list_number}"  filterBy="#{student.list_number}">
+					<h:outputText value="#{student.list_number}" />
+				</p:column>
+				
+				<p:column headerText="Categoría" sortBy="#{student.type}"  filterBy="#{student.type}">
+					<h:outputText value="#{student.type}" />
+				</p:column>
+				
+				<p:column headerText="Municipio" sortBy="#{student.municipality}"  filterBy="#{student.municipality}">
+					<h:outputText value="#{student.municipality}" />
+				</p:column>
+				
+				<p:column headerText="Grupo" sortBy="#{student.group}"  filterBy="#{student.group}">
+					<h:outputText value="#{student.group}" />
+				</p:column>
+				
+				<p:column headerText="Año" sortBy="#{student.year}"  filterBy="#{student.year}">
+					<h:outputText value="#{student.year}" />
+				</p:column>
+				
+				<p:column headerText="Curso" sortBy="#{student.course}"  filterBy="#{student.course}"> 
+					<h:outputText value="#{student.course}" />
+				</p:column>
+				
+				<p:column exportable="false">
+				
+					<p:commandButton 
+					icon="pi pi-pencil" id="update" 
+					styleClass="rounded-button ui-button-success ui-button-flat"
+					update=":form:student-manage"
+					oncomplete="PF('student-form').show()"
+					process="@this">
+					
+					<f:setPropertyActionListener value="#{student}"
+								target="#{studentBean.selected_student}" />
+							<p:resetInput target=":form:student-manage" />
+					
+					</p:commandButton>
+				</p:column>
+				
+
+			</p:dataTable>
+			
+			<ui:include src="student-form.xhtml"></ui:include>
+		
+		</h:form>
+	
+	</ui:define>
+
+</ui:composition>
+
+</HTML>

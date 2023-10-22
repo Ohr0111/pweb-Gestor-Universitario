@@ -2,6 +2,7 @@ package lio.gestor.g31.dto;
 
 public class StudentDTO {
 	
+	private String id;
 	private String dni;
 	private String full_name;
 	private String sex;
@@ -12,9 +13,12 @@ public class StudentDTO {
 	private String year;
 	private String course;
 	
-	public StudentDTO(String dni, String full_name, String sex, int list_number, String type, String municipality,
+	public StudentDTO() {super();}
+	
+	public StudentDTO(String id, String dni, String full_name, String sex, int list_number, String type, String municipality,
 			String group, String year, String course) {
 		super();
+		this.id = id;
 		this.dni = dni;
 		this.full_name = full_name;
 		this.sex = sex;
@@ -98,5 +102,12 @@ public class StudentDTO {
 		this.course = course;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 
 }

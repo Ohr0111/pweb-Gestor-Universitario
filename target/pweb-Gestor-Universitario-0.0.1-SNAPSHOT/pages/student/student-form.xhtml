@@ -1,0 +1,143 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog  header="Estudiante" showEffect="fade" modal="true"
+		widgetVar="student-form" responsive="true">
+		
+		<p:outputPanel id="student-manage" class="ui-fluid">
+		
+			<p:outputPanel rendered="#{not empty studentBean.selected_student}">
+			
+				<p:panelGrid layout="grid" columns="1">
+				
+					<h:panelGroup>
+					
+						<h3>Datos personales</h3>
+				
+					<h:panelGroup>
+					
+						<div class="p-field">
+						
+							<p:outputLabel for="@next" value="Nombre"></p:outputLabel>
+							<p:inputText value="#{studentBean.selected_student.full_name}" required="true"></p:inputText>
+						
+						</div>
+						
+						<div class="p-field">
+						
+							<p:outputLabel for="@next" value="Carnet"></p:outputLabel>
+							<p:inputText value="#{studentBean.selected_student.dni}" required="true"></p:inputText>
+						
+						</div>
+						
+						<h:panelGrid columns="2">
+						
+							<h:panelGroup>
+							
+								<p:outputLabel for="@next" value="Municipio"></p:outputLabel>
+								<p:selectOneMenu value="#{studentBean.selected_student.municipality}" label="Municipio" required="true" filter="true" filterMatchMode="startsWith">
+								
+									<f:selectItem itemValue="Arroyo" itemLabel="Arroyo"></f:selectItem>
+									<f:selectItem itemValue="La lisa" itemLabel="La lisa"></f:selectItem>
+								
+								</p:selectOneMenu>
+							
+							</h:panelGroup>
+							
+							<h:panelGroup>
+							
+								<p:outputLabel for="@next" value="Categotía"></p:outputLabel>
+								<p:selectOneMenu value="#{studentBean.selected_student.type}" label="Municipio" required="true" filter="true" filterMatchMode="startsWith">
+								
+									<f:selectItem itemValue="Promovido" itemLabel="Promovido"></f:selectItem>
+									<f:selectItem itemValue="Baja" itemLabel="Baja"></f:selectItem>
+								
+								</p:selectOneMenu>
+							
+							</h:panelGroup>
+						
+						</h:panelGrid>
+						
+						<div class="p-field">
+						
+							
+						
+						</div>
+					
+					</h:panelGroup>
+					
+					<h:panelGroup></h:panelGroup>
+					
+						<h3>Datos generales</h3>
+								
+						<h:panelGrid columns="2">
+						
+							<h:panelGroup>
+						
+								<p:outputLabel for="@next" value="Año"></p:outputLabel>
+								<p:selectOneMenu value="#{studentBean.selected_student.year}" label="Municipio" required="true" filter="true" filterMatchMode="startsWith">
+								
+									<f:selectItem itemValue="1" itemLabel="1"></f:selectItem>
+									<f:selectItem itemValue="2" itemLabel="2"></f:selectItem>
+								
+								</p:selectOneMenu>
+							
+								<p:outputLabel for="@next" value="Curso"></p:outputLabel>
+								<p:selectOneMenu value="#{studentBean.selected_student.course}" label="Municipio" required="true" filter="true" filterMatchMode="startsWith">
+								
+									<f:selectItem itemValue="2021-2023" itemLabel="2021-2023"></f:selectItem>
+								
+								</p:selectOneMenu>
+						
+							</h:panelGroup>
+
+							<h:panelGroup>	
+							
+								<p:outputLabel for="@next" value="Número de lista"></p:outputLabel>
+								<p:spinner max="35" min="1" immediate="1" value="#{studentBean.selected_student.list_number}">
+								</p:spinner>
+							
+								<p:outputLabel for="@next" value="Grupo"></p:outputLabel>
+								<p:selectOneMenu value="#{studentBean.selected_student.group}" label="Municipio" required="true" filter="true" filterMatchMode="startsWith">
+								
+									<f:selectItem itemValue="31" itemLabel="31"></f:selectItem>
+									<f:selectItem itemValue="32" itemLabel="32"></f:selectItem>
+								
+								</p:selectOneMenu>
+						
+							</h:panelGroup>
+						
+
+					</h:panelGrid>
+					
+					</h:panelGroup>
+					
+					<h:panelGroup></h:panelGroup>		
+					<h:panelGroup></h:panelGroup>
+					<h:panelGroup></h:panelGroup>
+					<h:panelGroup></h:panelGroup>
+					
+				</p:panelGrid>
+				
+			</p:outputPanel>
+			
+			
+		</p:outputPanel>
+
+		<f:facet name="footer">
+		
+			<p:commandButton value="Ingresar" icon="pi pi-user-plus"
+				actionListener="#{studentBean.save}"
+				/>
+				
+			<p:commandButton value="Cancelar" icon="pi pi-times"
+				onclick="PF('student-form').hide()" class="ui-button-secondary" />
+				
+		</f:facet>
+		
+	</p:dialog>
+	
+</ui:composition>
