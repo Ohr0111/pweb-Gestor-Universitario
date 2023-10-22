@@ -8,6 +8,7 @@ import lio.gestor.g31.utils.JsfUtils;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 
 import org.primefaces.PrimeFaces;
@@ -33,6 +34,7 @@ public class StudentBean {
 	public StudentBean() {
 		
 		student_list = new ArrayList<StudentDTO>();
+		selected_students = new ArrayList<StudentDTO>();
 		
 	}
 	
@@ -54,30 +56,56 @@ public class StudentBean {
 			
 			this.student_list.add(selected_student);
 			
-			JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_INFO, "message_student_insert");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante insertado"));
 			
 		}
 		else {
 			
-			JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_INFO, "message_student_update");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante modificado"));
 			
 		}
 		
+		PrimeFaces.current().ajax().update("form:messages", "form:student-table");
+		
 		PrimeFaces.current().executeScript("PF('student-form').hide()");
-		PrimeFaces.current().ajax().update("form:student-table");
 		
 	}
 	
 	public void deleteStudents() {
 		
 		try {
-    		this.student_list.remove(this.selected_student);
-            this.selected_student = null;
-            JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_INFO, "message_student_removed");
-            PrimeFaces.current().ajax().update("form:student-table");
+			
+			System.out.println("SSSSSS");
+			
+			if(!this.selected_students.isEmpty()) {
+				
+				int cant = this.selected_students.size();
+				
+				for(StudentDTO student : this.selected_students) {
+					
+					this.student_list.remove(student);
+					
+				}
+				
+	            this.selected_students = null;
+	            
+	            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", cant > 1 ? "Estudiantes elimidados" : "Estudiante elimidado"));
+	            
+	            PrimeFaces.current().ajax().update("form:messages", "form:student-table");
+				
+			}
+			
+    		
 		} catch (Exception e) {
+			System.out.println("Excepcion");
 			JsfUtils.addMessageFromBundle(null, FacesMessage.SEVERITY_ERROR, "message_error");
 		}
+		
+	}
+	
+	public boolean checkSelected() {
+		
+		return this.selected_students.isEmpty();
 		
 	}
 

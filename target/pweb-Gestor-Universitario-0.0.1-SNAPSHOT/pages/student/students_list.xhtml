@@ -47,9 +47,13 @@
 						
 							<span>
 							
-								<p:commandButton icon="pi pi-trash" id="delete"
+								<p:commandButton icon="pi pi-trash" 
+									id="delete"
 									styleClass="rounded-button ui-button-danger ui-button-flat"
-									actionListener="#{studentBean.deleteStudents}">
+									action="#{studentBean.deleteStudents}"
+									update="@this" 
+									>
+									<p:confirm header="Confirmar" message="Está seguro de eliminar al estudiante?" icon="pi pi-exclamation-triangle"/>
 								</p:commandButton>
 							
 							</span>
@@ -96,6 +100,14 @@
 					</div>
 					
 				</f:facet>
+				
+				<p:ajax event="rowSelect" update=":form:student-table:delete" />
+				<p:ajax event="rowUnselect" update=":form:student-table:delete" />
+				
+				<p:ajax event="rowSelectCheckbox" update=":form:student-table:delete" />
+				<p:ajax event="rowUnselectCheckbox" update=":form:student-table:delete" />
+				
+				<p:ajax event="toggleSelect" update=":form:student-table:delete" />
 						
 				<p:column selectionMode="multiple" exportable="false"/>
 				
