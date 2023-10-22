@@ -7,8 +7,8 @@
 
 	<title>Login</title>
 
+ 	<h:outputStylesheet name="login-styles.css" library="css"> </h:outputStylesheet>
 	<h:outputStylesheet name="primeflex.min.css" library="css"> </h:outputStylesheet>
-	<h:outputStylesheet name="login-styles.css" library="css"> </h:outputStylesheet>
 
 </h:head>
 
@@ -26,42 +26,59 @@
 
 			<div class="p-col">
 
-				<p:card style="width: auto">
+				<p:card class="card" style="width: auto">
 
-					<f:facet name="title"> <h2>Login</h2> </f:facet>
+					<f:facet class="tag-title" name="title"> <p:outputLabel class="tag-title">Login</p:outputLabel> </f:facet>
 
 					<p:panelGrid columns="1" layout="grid">
+					
+						<p:spacer heigth="100px"></p:spacer>
 
 						<h:panelGroup>
 
-							<p:outputLabel for="@next" value="Usuario: "></p:outputLabel>
+							<p:outputLabel for="@next" value="Usuario"></p:outputLabel>
 							<p:inputText placeholder="Usuario" value="#{userBean.username}" required="true"></p:inputText>
 							
 							
 						</h:panelGroup>
+						
+						<p:spacer heigth="60"></p:spacer>
 
 						<h:panelGroup>
 
-							<p:outputLabel for="@next" value="Contraseña: "></p:outputLabel>
-							<p:password placeholder="Contraseña" required="true"></p:password>
-							<p:spacer heigth="20"></p:spacer>
+							<p:outputLabel for="@next" value="Contraseña"></p:outputLabel>
+							<p:password value="#{userBean.password}" placeholder="Contraseña" required="true"></p:password>
+							<p:spacer heigth="30"></p:spacer>
 							<h:outputLink href="asd">¿Has olvidado la contraseña?.</h:outputLink>
 							
 						</h:panelGroup>
 						
-						<p:spacer height="80"></p:spacer>
+						<p:spacer height="50"></p:spacer>
 						
-						<div class="p-row fill-row">
+
+						<h:panelGroup class="center">
+
+
+							<p:commandButton  icon="pi pi-sign-in" ajax="false"
+								action="#{userBean.login}" value="Login"></p:commandButton>
+								
+							<p:spacer width="15"></p:spacer>
+
+							<p:commandButton icon="pi pi-user-plus"
+								ajax="false" action="#{userBean.login}" value="Singin"></p:commandButton>
+
+
+						</h:panelGroup>
 						
-							<p:commandButton icon="pi pi-sign-in" ajax="false" action="#{userBean.login}" value="Login"></p:commandButton>
-							<p:commandButton icon="pi pi-sign-in" ajax="false" action="#{userBean.login}" value="Singin"></p:commandButton>
-						
-						</div>
 
 					</p:panelGrid>
 
 					<f:facet name="footer">
-
+					    
+					    	<p:spacer height="20"></p:spacer>
+					    	<p:outputLabel class="tag-small center">Gestor-Universitario.2023</p:outputLabel>
+					    
+						
 					</f:facet>
 
 				</p:card>

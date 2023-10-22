@@ -1,0 +1,44 @@
+.full-row{
+	width: 100% ! important;
+	display: flex ! important;
+}
+
+.full-right{
+	display: flex ! important;
+	justify-content: end ! important;
+}
+
+.full-left{
+	display: flex ! important;
+	justify-content: start ! important;
+}
+
+.shadow-8{
+	box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2) ! important;
+}
+
+.shadow-orange{
+	box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2) ! important;
+    
+}
+
+.border-blue{
+	border-color: 2px 2px blue ! important;
+}
+
+.in-row{
+	display: flex ! important;
+}
+
+.in-row{
+	display: flex ! important;
+	flex-direction: column ! important;
+}
+
+
+button:hover, input:hover{
+		
+	transform: scale(1.07);
+	
+}
+
