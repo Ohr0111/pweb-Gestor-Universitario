@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog  header="Grupo" showEffect="fade" modal="true"
+		widgetVar="group-form" responsive="true">
+		
+		<p:outputPanel id="group-manage" class="ui-fluid">
+		
+			<p:outputPanel rendered="#{not empty groupBean.selectedGroup}">
+			
+				<p:panelGrid columns="1" layout="flex" contentStyleClass="ui-fluid">
+        
+        		<p:outputPanel class="p-field">
+		        <p:outputLabel for="name" styleClass="p-d-block">Nombre</p:outputLabel>
+        		<p:inputText id="name" styleClass="p-d-block name" value="#{groupBean.selectedGroup.name}" required="true"/>
+        		<small class="ui-state-error name_message" style="display: none">Debe rellenar el nombre</small>
+        		</p:outputPanel>
+
+        		<p:outputPanel class="p-field">
+                <p:outputLabel for="@next" value="Año"/>
+                <p:selectOneMenu id="menu_year" value="#{groupBean.selectedGroup.year}" required="true" 
+                                 styleClass="year" hideNoSelectionOption="#{groupBean.selectedGroup.year != '' }">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{groupBean.yearList}" var="year"
+									itemLabel="#{year}" itemValue="#{year}"/>
+                </p:selectOneMenu>
+                <small class="ui-state-error year_message" style="display: none">Debe seleccionar una opción</small>
+            	</p:outputPanel>
+            	
+            	<p:outputPanel class="p-field">
+                <p:outputLabel for="@next" value="Curso"/>
+                <p:selectOneMenu id="menu_course" value="#{groupBean.selectedGroup.course}" required="true"
+                                styleClass="course" hideNoSelectionOption="#{not empty groupBean.selectedGroup.course}">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{groupBean.courseList}" var="course"
+									itemLabel="#{course}" itemValue="#{course}"/>
+                </p:selectOneMenu>
+                <small class="ui-state-error course_message" style="display: none">Debe seleccionar una opción</small>
+            	</p:outputPanel>
+        
+    		</p:panelGrid>
+				
+			</p:outputPanel>
+			
+			
+		</p:outputPanel>
+
+		<f:facet name="footer">
+		
+			<p:commandButton value="Guardar" icon="pi pi-check"
+				actionListener="#{groupBean.saveGroup}" onclick="return subjectValidation();"
+				update="group-manage" process="group-manage @this"
+				/>
+				
+			<p:commandButton value="Cancelar" icon="pi pi-times"
+				onclick="PF('group-form').hide()" class="ui-button-secondary" />
+				
+		</f:facet>
+	
+	<h:outputScript name="subject-script.js" library="script" />	
+	</p:dialog>
+	
+</ui:composition>
