@@ -1,8 +1,17 @@
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\dto\StudentDTO.java
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\config\MainWebAppInitializer.java
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\bean\StudentBean.java
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\config\SpringConfig.java
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\bean\UserBean.java
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\utils\JsfUtils.java
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\StudentService.java
-C:\My files\Spring Tools Workspace\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\StudentServiceImplementation.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\config\SpringConfig.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\dto\SubjectDto.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\StudentServiceImplementation.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\GroupService.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\GroupServiceImpl.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\bean\StudentBean.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\SubjectService.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\bean\SubjectBean.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\bean\UserBean.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\dto\CourseDto.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\config\MainWebAppInitializer.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\dto\StudentDTO.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\utils\JsfUtils.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\SubjectServiceImpl.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\dto\GroupDto.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\CourseService.java
+C:\Laura\-AAA\3.2\PWeb\Proyecto Final\pweb-Gestor-Universitario\src\main\java\lio\gestor\g31\service\StudentService.java
