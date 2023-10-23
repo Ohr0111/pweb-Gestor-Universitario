@@ -1,11 +1,11 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+﻿<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
 	<p:dialog  header="Estudiante" showEffect="fade" modal="true"
-		widgetVar="student-form" responsive="true">
+		widgetVar="student-form" responsive="true" width="450">
 		
 		<p:outputPanel id="student-manage" class="ui-fluid">
 		
@@ -22,14 +22,14 @@
 						<div class="p-field">
 						
 							<p:outputLabel for="@next" value="Nombre"></p:outputLabel>
-							<p:inputText value="#{studentBean.selected_student.full_name}" required="true"></p:inputText>
+							<p:inputMask value="#{studentBean.selected_student.full_name}" required="true"></p:inputMask>
 						
 						</div>
 						
 						<div class="p-field">
 						
 							<p:outputLabel for="@next" value="Carnet"></p:outputLabel>
-							<p:inputText value="#{studentBean.selected_student.dni}" required="true"></p:inputText>
+							<p:inputMask mask="99999999999" value="studentBean.selected_student.dni"></p:inputMask>
 						
 						</div>
 						
@@ -129,7 +129,7 @@
 
 		<f:facet name="footer">
 		
-			<p:commandButton value="Ingresar" icon="pi pi-user-plus"
+			<p:commandButton value="Guardar" icon="pi pi-check"
 				actionListener="#{studentBean.save}"
 				/>
 				
