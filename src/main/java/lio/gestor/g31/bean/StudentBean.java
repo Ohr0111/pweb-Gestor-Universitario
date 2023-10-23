@@ -50,25 +50,36 @@ public class StudentBean {
 	
 	public void save() {
 		
-		if(this.selected_student.getId() == null) {
+		if(this.selected_student.getDni() == null || this.selected_student.getFull_name() == null) {
 			
-			selected_student.setId(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
-			
-			this.student_list.add(selected_student);
-			
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante insertado"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Error", "Debe rellenar todos los datos"));
+			PrimeFaces.current().ajax().update("form:messages");
 			
 		}
+		
 		else {
 			
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante modificado"));
+			if(this.selected_student.getId() == null) {
+				
+				selected_student.setId(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9));
+				
+				this.student_list.add(selected_student);
+				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante insertado"));
+				
+			}
+			else {
+				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante modificado"));
+				
+			}
+			
+			PrimeFaces.current().ajax().update("form:messages", "form:student-table");
+			
+			PrimeFaces.current().executeScript("PF('student-form').hide()");
 			
 		}
-		
-		PrimeFaces.current().ajax().update("form:messages", "form:student-table");
-		
-		PrimeFaces.current().executeScript("PF('student-form').hide()");
-		
+			
 	}
 	
 	public void deleteStudents() {
