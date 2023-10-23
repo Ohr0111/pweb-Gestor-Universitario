@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/pages/template/layout.xhtml">
+        <ui:define name="title">
+		    Inicio
+		</ui:define>
+    	<ui:define name="layout">
+    		<h:form>
+		    	<p:card style="width: 100%; margin-bottom: 2em">
+				    <f:facet name="title">
+				        Bievenido
+				    </f:facet>
+				
+				    <p>Corte del proyecto de curso de la asignatura. Funcionalidades implementadas: </p>
+				    <ul>
+				    	<li>Login </li>
+				    	<li>Cruds </li>
+				    </ul>
+				</p:card>
+			</h:form>
+    	</ui:define>
+    </ui:composition>
+</html>

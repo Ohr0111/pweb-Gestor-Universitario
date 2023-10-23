@@ -1,0 +1,111 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <div class="layout-sidebar">
+   	<!-- <div class="layout-sidebar-filter ui-fluid ui-input-filled">
+           <h:form>
+                   <p:autoComplete placeholder="Search by name..." minQueryLength="1" effect="fade" 
+                               panelStyleClass="layout-sidebar-filter-panel" scrollHeight="300" emptyMessage="No results found!">
+                   
+               </p:autoComplete>
+           </h:form>
+       </div> -->
+    
+        <div class="layout-menu">
+                <div class="menu-category">Administración</div>
+                <div class="menu-items">
+                    <h:link >
+                        Gestionar usuarios
+                    </h:link>
+                </div>
+                <div class="menu-category">Menú</div>
+                <div class="menu-items">
+                    <h:link >
+                        Cursos
+                    </h:link>
+                </div>
+                <div class="menu-items">
+                    <h:link >
+                        Grupos
+                    </h:link>
+                </div>
+                <div class="menu-items">
+                    <h:link outcome="/pages/student/students_list.html">
+                        Estudiantes
+                    </h:link>
+                </div>
+                <div class="menu-items">
+                    <h:link outcome="/pages/subject/subjects_list.html">
+                        Asignaturas
+                    </h:link>
+                </div>
+                <div class="menu-category">Reportes</div>
+                <div class="menu-items">
+                	<p:outputPanel >
+                        <a tabindex="0" class="submenu-link">
+                            Información
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li><h:link >
+                                     Listado de alumnos por grupo
+                                </h:link></li>
+                                <li><h:link>
+                                     Listado de las asignaturas por año
+                                </h:link></li>
+                                <li><h:link>
+                                    Listado de las evaluaciones por grupo en cada asignatura
+                                </h:link></li>
+                            </ul>
+                        </div>
+                    </p:outputPanel>
+                	<p:outputPanel >
+                        <a tabindex="0" class="submenu-link">
+                            Resultados y certificaiones finales
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li><h:link >
+                                    Listado de promedios finales 
+                                </h:link></li>
+                                <li><h:link>
+                                    Escalafón
+                                </h:link></li>
+                                <li><h:link>
+                                    Certificación de notas
+                                </h:link></li>
+                            </ul>
+                        </div>
+                    </p:outputPanel>
+                    <p:outputPanel >
+                        <a tabindex="0" class="submenu-link">
+                            Grupo de bajo rendimiento
+                        </a>
+                        <div class="submenu">
+                            <ul>
+                                <li><h:link >
+                                     Listado de alumnos desaprobados
+                                </h:link></li>
+                                <li><h:link>
+                                    Listado de alumnos que causan baja
+                                </h:link></li>
+                                <li><h:link>
+                                     Listado de repitentes
+                                </h:link></li>
+                            </ul>
+                        </div>
+                    </p:outputPanel>
+                             
+                </div>
+                <div class="layout-footer">
+        			<div class="layout-footer-left">
+            			<span> </span>
+        			</div>
+    			</div>
+        </div>
+    </div>
+
+</ui:composition>

@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+    <div class="layout-topbar" style="background: #a6bea6;">
+        <a class="menu-button" tabindex="0">
+            <i class="pi pi-bars"></i>
+        </a>
+        <h:link id="top_link" styleClass="" class="p-m-2" outcome="/pages/welcome/welcome.xhtml">
+            <p:graphicImage name="/icons/UilUniversity.svg" library="images" width="50" height="50" />
+            <h5 id="top_h5" style="display:none; color:black" class="p-m-0">Gestor Universitario</h5>
+        </h:link>
+		<h3 id="top_h3" style="color:black" >Gestor Universitario</h3>
+        <h:form styleClass="topbar-form">
+            <ul class="topbar-menu">
+                
+            </ul>
+        </h:form>
+    </div>
+    <script>
+	    let window_w = window.innerWidth;
+		let window_h = window.innerHeight;
+		let h3 = document.querySelector("#top_h3");
+		let h5 = document.querySelector("#top_h5");
+		let link = document.querySelector("#top_link");
+		if(parseInt(window_w)> 960){
+			h3.innerHTML = "Gestor Universitario";
+			h5.style.display = "none";
+			link.classList.remove('logo');
+			
+		}
+		else {
+			h3.innerHTML = " ";
+			h5.style.display = "block";
+			link.classList.add('logo');
+		}
+		
+    	window.addEventListener('resize', function() {
+    		let window_w = window.innerWidth;
+    		let window_h = window.innerHeight;
+        	let h3 = document.querySelector("#top_h3");
+        	let h5 = document.querySelector("#top_h5");
+        	let link = document.querySelector("#top_link");
+        	if(parseInt(window_w)> 960){
+        		h3.innerHTML = "Gestor Universitario";
+        		h5.style.display = "none";
+        		link.classList.remove('logo');
+        		
+        	}
+        	else {
+        		h3.innerHTML = " ";
+        		h5.style.display = "block";
+        		link.classList.add('logo');
+        	}
+        	
+    	});
+    	
+    </script>
+</ui:composition>

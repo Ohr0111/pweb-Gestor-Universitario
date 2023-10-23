@@ -1,0 +1,156 @@
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/template/layout.xhtml">
+	
+	<ui:define name="layout">
+	
+		<h:form id="form">
+			<p:growl id="messages" showDetail="true"/>
+		
+			<p:toolbar class="shadow-8" style="margin-bottom: 1rem">
+			
+				<p:toolbarGroup class="p-row">
+				
+					<h1>Gestión de asignaturas</h1>
+				
+				</p:toolbarGroup>
+				
+			
+			</p:toolbar>
+			
+			<p:dataTable
+			class="shadow-8"
+			id="subject-table" 
+			value="#{subjectBean.subjects}"
+			widgetVar="subject_t" 
+			var="subject"
+			reflow="true" 
+			paginator="true"
+			rows="10" 
+			rowKey="#{subject.id}"
+			selection="#{subjectBean.selectedSubjects}"
+			paginatorPosition="bottom"
+			scrollable="true">
+			
+				<f:facet name="header">
+				
+					<div class="products-table-header">
+
+						<span style="font-weight: bold">
+							<h1 style="width: 30%">Listado</h1> 
+						</span > 
+						
+						<span class="border-blue full-row">
+						
+							<span>
+							
+								<p:commandButton
+									icon="pi pi-trash" id="delete"
+									styleClass="rounded-button ui-button-danger ui-button-flat"
+									action="#{subjectBean.deleteSubjects}">
+									
+									<p:confirm message="¿Está seguro que desea eliminar los datos?" header="Eliminar" icon="pi pi-exclamation-triangle"></p:confirm>
+
+								</p:commandButton>
+							
+							</span>
+						
+							<span style="width: 80%">
+							
+								<span style="width: 100%" class="filter-container ui-input-icon-right  full-right">
+								
+								<i class="pi pi-search"></i> 
+								
+								<p:inputText style="width: 85%" id="globalFilter"
+									onkeyup="PF('subject_t').filter()" placeholder="Buscar" />
+									
+								</span>
+							
+							</span> 
+							
+							<span style="width: 13.5%" class="full-right">
+							
+								<p:commandButton
+									icon="pi pi-plus" 
+									id="new"
+									styleClass="rounded-button ui-button-flat"
+									style="margin-right: .5rem" 
+									actionListener="#{subjectBean.openNew}"
+									update=":form:subject-manage"
+									oncomplete="PF('subject-form').show()">
+									
+								</p:commandButton> 
+							
+								<p:commandButton icon="pi pi-upload" id="export"
+									styleClass="rounded-button ui-button-secondary ui-button-flat"
+									style="margin-right: .5rem"
+									ajax="false">
+									<p:dataExporter type="pdf" target="subject-table" fileName="subjects" />
+								</p:commandButton> 
+							
+							</span>
+						
+							
+
+						</span>
+
+					</div>
+					
+				</f:facet>
+						
+				<p:column selectionMode="multiple" exportable="false"/>
+
+				<p:column headerText="Nombre" sortBy="#{subject.name}" filterBy="#{subject.name}">
+					<h:outputText value="#{subject.name}" />
+				</p:column>
+				
+				<p:column headerText="Total Horas" sortBy="#{subject.hours}"  filterBy="#{subject.hours}">
+					<h:outputText value="#{subject.hours}" />
+				</p:column>
+				
+				<p:column headerText="Año" sortBy="#{subject.year}"  filterBy="#{subject.year}">
+					<h:outputText value="#{subject.year}" />
+				</p:column>
+				
+				<p:column headerText="Curso" sortBy="#{subject.course}"  filterBy="#{subject.course}"> 
+					<h:outputText value="#{subject.course}" />
+				</p:column>
+				
+				<p:column exportable="false">
+				
+					<p:commandButton 
+					icon="pi pi-pencil" id="update" 
+					styleClass="rounded-button ui-button-success ui-button-flat"
+					update=":form:subject-manage"
+					oncomplete="PF('subject-form').show()"
+					process="@this">
+					
+					<f:setPropertyActionListener value="#{subject}"
+								target="#{subjectBean.selectedSubject}" />
+							<p:resetInput target=":form:subject-manage" />
+					
+					</p:commandButton>
+				</p:column>
+				
+
+			</p:dataTable>
+			
+			<ui:include src="subject-form.xhtml"></ui:include>
+			
+			<p:confirmDialog global="true" showEffect="fade" width="300">
+            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"
+                             icon="pi pi-times"/>
+        	</p:confirmDialog>
+		
+		</h:form>
+	
+	</ui:define>
+
+</ui:composition>
+
+</HTML>

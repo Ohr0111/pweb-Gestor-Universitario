@@ -1,0 +1,75 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog  header="Asignatura" showEffect="fade" modal="true"
+		widgetVar="subject-form" responsive="true">
+		
+		<p:outputPanel id="subject-manage" class="ui-fluid">
+		
+			<p:outputPanel rendered="#{not empty subjectBean.selectedSubject}">
+			
+				<p:panelGrid columns="2" layout="flex" contentStyleClass="ui-fluid">
+        
+        		<p:outputPanel class="p-field">
+		        <p:outputLabel for="name" styleClass="p-d-block">Nombre</p:outputLabel>
+        		<p:inputText id="name" styleClass="p-d-block name" value="#{subjectBean.selectedSubject.name}" required="true"/>
+        		<small class="ui-state-error name_message" style="display: none">Debe rellenar el nombre</small>
+        		</p:outputPanel>
+
+        
+		        <p:outputPanel class="p-field">
+		        <p:outputLabel for="@next" value="Horas Clase" styleClass=""/>
+        		<p:spinner id="hours" min="1" max="150" styleClass="" value="#{subjectBean.selectedSubject.hours}" required="true"/>
+        		<!-- <small class="p-d-block ui-state-error">Username is not available.</small> -->
+        		</p:outputPanel>
+
+        		<p:outputPanel class="p-field">
+                <p:outputLabel for="@next" value="Año"/>
+                <p:selectOneMenu id="menu_year" value="#{subjectBean.selectedSubject.year}" required="true" 
+                                 styleClass="year" hideNoSelectionOption="#{subjectBean.selectedSubject.year != '' }">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{subjectBean.yearList}" var="year"
+									itemLabel="#{year}" itemValue="#{year}"/>
+                </p:selectOneMenu>
+                <small class="ui-state-error year_message" style="display: none">Debe seleccionar una opción</small>
+            	</p:outputPanel>
+            	
+            	<p:outputPanel class="p-field">
+                <p:outputLabel for="@next" value="Curso"/>
+                <p:selectOneMenu id="menu_course" value="#{subjectBean.selectedSubject.course}" required="true"
+                                styleClass="course" hideNoSelectionOption="#{not empty subjectBean.selectedSubject.course}">
+                    <p:ajax update="@this" process="@this"/>
+                    <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
+                    <f:selectItems value="#{subjectBean.courseList}" var="course"
+									itemLabel="#{course}" itemValue="#{course}"/>
+                </p:selectOneMenu>
+                <small class="ui-state-error course_message" style="display: none">Debe seleccionar una opción</small>
+            	</p:outputPanel>
+        
+    		</p:panelGrid>
+				
+			</p:outputPanel>
+			
+			
+		</p:outputPanel>
+
+		<f:facet name="footer">
+		
+			<p:commandButton value="Guardar" icon="pi pi-check"
+				actionListener="#{subjectBean.saveSubject}" onclick="return subjectValidation();"
+				update="subject-manage" process="subject-manage @this"
+				/>
+				
+			<p:commandButton value="Cancelar" icon="pi pi-times"
+				onclick="PF('subject-form').hide()" class="ui-button-secondary" />
+				
+		</f:facet>
+	
+	<h:outputScript name="subject-script.js" library="script" />	
+	</p:dialog>
+	
+</ui:composition>
