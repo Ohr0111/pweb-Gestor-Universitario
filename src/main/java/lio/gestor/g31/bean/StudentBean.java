@@ -65,12 +65,12 @@ public class StudentBean {
 				
 				this.student_list.add(selected_student);
 				
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ï¿½xito", "Estudiante insertado"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante insertado"));
 				
 			}
 			else {
 				
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ï¿½xito", "Estudiante modificado"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", "Estudiante modificado"));
 				
 			}
 			
@@ -100,7 +100,7 @@ public class StudentBean {
 				
 	            this.selected_students = null;
 	            
-	            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "ï¿½xito", cant > 1 ? "Estudiantes elimidados" : "Estudiante elimidado"));
+	            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Éxito", cant > 1 ? "Estudiantes elimidados" : "Estudiante elimidado"));
 	            
 	            PrimeFaces.current().ajax().update("form:messages", "form:student-table");
 				

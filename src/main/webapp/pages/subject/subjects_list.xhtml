@@ -141,11 +141,13 @@
 			
 			<ui:include src="subject-form.xhtml"></ui:include>
 			
-			<p:confirmDialog global="true" showEffect="fade" width="300">
-            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check"/>
-            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-secondary"
-                             icon="pi pi-times"/>
-        	</p:confirmDialog>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+			
+				<p:commandButton value="Eliminar" type="button" styleClass="ui-confirmdialog-yes ui-button-success ui-button-flat" icon="pi pi-check"/>
+				
+				<p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no ui-button-danger ui-button-flat" icon="pi pi-times"/>
+			
+			</p:confirmDialog>
 		
 		</h:form>
 	
