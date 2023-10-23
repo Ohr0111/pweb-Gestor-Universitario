@@ -21,7 +21,7 @@ public class GroupServiceImpl implements GroupService{
 		groups.add(new GroupDto(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9),"INF-3",3,"2020-2021"));
 		groups.add(new GroupDto(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9),"INF-1",2,"2020-2021"));
 		groups.add(new GroupDto(UUID.randomUUID().toString().replaceAll("-", "").substring(0, 9),"INF-2",2,"2020-2021"));
-		return null;
+		return groups;
 	}
 
 	@Override

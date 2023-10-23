@@ -14,7 +14,9 @@ import org.primefaces.PrimeFaces;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lio.gestor.g31.dto.CourseDto;
 import lio.gestor.g31.dto.SubjectDto;
+import lio.gestor.g31.service.CourseService;
 import lio.gestor.g31.service.SubjectService;
 
 
@@ -26,7 +28,7 @@ public class SubjectBean {
 	private SubjectDto selectedSubject;
 	
 	private ArrayList<Integer> yearList;
-	private ArrayList<String> courseList;
+	private ArrayList<CourseDto> courseList;
 
 	private ArrayList<SubjectDto> subjects;	
 	private List<SubjectDto> selectedSubjects;
@@ -35,8 +37,8 @@ public class SubjectBean {
 	private SubjectService service;
 	
 	
-//	@Autowired
-//	private RoleService roleService;
+	@Autowired
+	private CourseService courseService;
 	
 	
 	public SubjectBean() {
@@ -55,8 +57,7 @@ public class SubjectBean {
 		yearList.add(4);
 		
 		courseList = new ArrayList<>();
-		courseList.add("2019-2020");
-		courseList.add("2020-2021");
+		courseList = (ArrayList<CourseDto>)courseService.getCourses();
 		
     }
 	
@@ -132,11 +133,11 @@ public class SubjectBean {
 		this.yearList = yearList;
 	}
 
-	public ArrayList<String> getCourseList() {
+	public ArrayList<CourseDto> getCourseList() {
 		return courseList;
 	}
 
-	public void setCourseList(ArrayList<String> courseList) {
+	public void setCourseList(ArrayList<CourseDto> courseList) {
 		this.courseList = courseList;
 	}
 
