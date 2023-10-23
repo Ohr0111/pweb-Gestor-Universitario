@@ -45,7 +45,7 @@
                     <p:ajax update="@this" process="@this"/>
                     <f:selectItem itemLabel="Seleccione" itemValue="#{null}" noSelectionOption="true"/>
                     <f:selectItems value="#{subjectBean.courseList}" var="course"
-									itemLabel="#{course}" itemValue="#{course}"/>
+									itemLabel="#{course.course}" itemValue="#{course.course}"/>
                 </p:selectOneMenu>
                 <small class="ui-state-error course_message" style="display: none">Debe seleccionar una opción</small>
             	</p:outputPanel>

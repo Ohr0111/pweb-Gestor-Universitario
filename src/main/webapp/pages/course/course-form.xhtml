@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog  header="Curso" showEffect="fade" modal="true"
+		widgetVar="course-form" responsive="true">
+		
+		<p:outputPanel id="course-manage" class="ui-fluid">
+		
+			<p:outputPanel rendered="#{not empty courseBean.selectedCourse}">
+			
+				<p:panelGrid columns="1" layout="flex" contentStyleClass="ui-fluid">
+        
+        		<p:outputPanel class="p-field">
+		        <p:outputLabel for="name" styleClass="p-d-block">Nombre del curso</p:outputLabel>
+        		<!-- <p:inputText id="name" styleClass="p-d-block name" value="#{courseBean.selectedCourse.course}" required="true"/> -->
+        		<p:inputMask id="name" styleClass="p-d-block name" value="#{courseBean.selectedCourse.course}" mask="9999-9999" required="true"/>
+        		<small class="ui-state-error name_message" style="display: none">Debe rellenar el nombre</small>
+        		</p:outputPanel>          	
+            	
+        
+    		</p:panelGrid>
+				
+			</p:outputPanel>
+			
+			
+		</p:outputPanel>
+
+		<f:facet name="footer">
+		
+			<p:commandButton value="Guardar" icon="pi pi-check"
+				actionListener="#{courseBean.saveCourse}" onclick="return courseValidation();"
+				update="course-manage" process="course-manage @this"
+				/>
+				
+			<p:commandButton value="Cancelar" icon="pi pi-times"
+				onclick="PF('course-form').hide()" class="ui-button-secondary" />
+				
+		</f:facet>
+	
+	<h:outputScript name="course-script.js" library="script" />	
+	</p:dialog>
+	
+</ui:composition>
