@@ -1,0 +1,139 @@
+<HTML xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/pages/template/layout.xhtml">
+
+	<ui:define name="layout">
+
+		<h:form id="form">
+		
+			<p:growl id="messages" showDetail="true"/>
+		
+			<p:toolbar class="shadow-8" style="margin-bottom: 1rem">
+
+				<p:toolbarGroup class="p-row">
+
+					<h1>Gestión de usuarios</h1>
+
+				</p:toolbarGroup>
+
+
+			</p:toolbar>
+
+			<p:dataTable class="shadow-8" id="user-table"
+				value="#{manageUserBean.user_list}" widgetVar="user_t"
+				var="user" reflow="true" paginator="true" rows="10"
+				rowKey="#{user.id}" selection="#{manageUserBean.selected_users}"
+				paginatorPosition="bottom" scrollable="true"
+				disable="#{manageUserBean.checkSelected}">
+
+				<f:facet name="header">
+
+					<div class="products-table-header">
+
+						<span style="font-weight: bold">
+							<h1 style="width: 30%">Listado</h1>
+						</span> <span class="border-blue full-row"> <span> 
+						
+							<p:commandButton
+									icon="pi pi-trash" id="delete"
+									styleClass="rounded-button ui-button-danger ui-button-flat"
+									action="#{manageUserBean.deleteUsers}">
+									
+									<p:confirm message="¿Está seguro que desea eliminar los datos?" header="Eliminar" icon="pi pi-exclamation-triangle"></p:confirm>
+
+								</p:commandButton>
+
+						</span> <span style="width: 80%"> <span style="width: 100%"
+								class="filter-container ui-input-icon-right  full-right">
+
+									<i class="pi pi-search"></i> <p:inputText style="width: 85%"
+										id="globalFilter" onkeyup="PF('user_t').filter()"
+										placeholder="Buscar" />
+
+							</span>
+
+						</span> 
+						
+							<span style="width: 13.5%" class="full-right"> 
+								
+								<p:commandButton
+										icon="pi pi-plus" id="new"
+										styleClass="rounded-button ui-button-flat"
+										style="margin-right: .5rem"
+										actionListener="#{manageUserBean.newUser}"
+										update=":form:user-manage"
+										oncomplete="PF('user-form').show()">			
+	
+									</p:commandButton> <p:commandButton icon="pi pi-upload" id="export"
+										styleClass="rounded-button ui-button-secondary ui-button-flat"
+										style="margin-right: .5rem" ajax="false">
+										<p:dataExporter type="pdf" target="users-table"
+											fileName="users" />
+									</p:commandButton>
+	
+							</span>
+
+						</span>
+
+					</div>
+
+				</f:facet>
+
+
+				<p:column selectionMode="multiple" exportable="false" />
+
+				<p:column headerText="Nombre" sortBy="#{user.name}"
+					filterBy="#{user.name}">
+					<h:outputText value="#{user.name}" />
+				</p:column>
+
+				<p:column headerText="Usuario" sortBy="#{user.user_name}"
+					filterBy="#{user.user_name}">
+					<h:outputText value="#{user.user_name}" />
+				</p:column>
+
+				<p:column headerText="Rol" sortBy="#{user.role}"
+					filterBy="#{user.role}">
+					<h:outputText value="#{user.role}" />
+				</p:column>
+
+				<p:column exportable="false">
+
+					<p:commandButton icon="pi pi-pencil" id="update"
+						styleClass="rounded-button ui-button-success ui-button-flat"
+						update=":form:user-manage"
+						oncomplete="PF('user-form').show()" process="@this">
+
+
+						<f:setPropertyActionListener value="#{user}"
+							target="#{manageUserBean.selected_user}" />
+						<p:resetInput target=":form:user-manage" />
+
+					</p:commandButton>
+
+				</p:column>
+
+
+			</p:dataTable>
+
+			<ui:include src="user-form.xhtml"></ui:include>
+			
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+			
+				<p:commandButton value="Eliminar" type="button" styleClass="ui-confirmdialog-yes ui-button-success ui-button-flat" icon="pi pi-check"/>
+				
+				<p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no ui-button-danger ui-button-flat" icon="pi pi-times"/>
+			
+			</p:confirmDialog>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
+</HTML>

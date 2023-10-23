@@ -1,0 +1,104 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<p:dialog  header="Usuario" showEffect="fade"  modal="true"
+		widgetVar="user-form" responsive="true" width="450">
+		
+		<p:outputPanel id="user-manage" class="ui-fluid">
+		
+			<p:outputPanel rendered="#{not empty manageUserBean.selected_user}">
+			
+				<p:panelGrid layout="grid" columns="1">
+				
+					<h:panelGroup>
+					
+						<h3>Datos personales</h3>
+				
+					<h:panelGroup>
+					
+						<p:outputPanel class="p-field">
+						
+							<p:outputLabel for="@next" value="Nombre"></p:outputLabel>
+							<p:inputText value="#{manageUserBean.selected_user.name}" required="true"></p:inputText>
+							<small class="ui-state-error name_message" style="display: none">Ingrese el nombre</small>
+						
+						</p:outputPanel>
+
+					</h:panelGroup>
+					
+					<h:panelGroup></h:panelGroup>
+					
+						<h3>Datos de usuario</h3>
+								
+						<h:panelGrid columns="2">
+						
+							<h:panelGroup>
+							
+								<p:outputPanel>
+								
+									<p:outputLabel for="@next" value="Rol"></p:outputLabel>
+									<p:selectOneMenu value="#{manageUserBean.selected_user.role}" label="Municipio" required="true" filter="true" filterMatchMode="startsWith">
+									
+										<f:selectItem itemValue="Director" itemLabel="Director"></f:selectItem>
+										<f:selectItem itemValue="Profesor" itemLabel="Profesor"></f:selectItem>
+									
+									</p:selectOneMenu>
+									<small class="ui-state-error name_message" style="display: none">Seleccione el rol</small>
+								
+								</p:outputPanel>
+								
+							
+								<p:outputLabel for="@next" value="Usuario"></p:outputLabel>
+								<p:inputText value="#{manageUserBean.selected_user.user_name}" label="Municipio" required="true" filter="true" filterMatchMode="startsWith">
+								</p:inputText>
+						
+							</h:panelGroup>
+
+							<h:panelGroup>	
+							
+								<p:outputLabel for="@next" value="Contraseña"></p:outputLabel>
+								<p:password match="password_2" value="#{manageUserBean.selected_user.password}" label="Municipio" required="true">
+								</p:password>
+								
+								<p:outputLabel for="@next" value="Confirmar contraseña"></p:outputLabel>
+								<p:password id="password_2" value="#{manageUserBean.selected_user.user_name}" label="Municipio" required="true"
+								rendered="#{empty manageUserBean.selected_user.id}">
+								</p:password>
+								
+						
+							</h:panelGroup>
+						
+
+					</h:panelGrid>
+					
+					</h:panelGroup>
+					
+					<h:panelGroup></h:panelGroup>		
+					<h:panelGroup></h:panelGroup>
+					<h:panelGroup></h:panelGroup>
+					<h:panelGroup></h:panelGroup>
+					
+				</p:panelGrid>
+				
+			</p:outputPanel>
+			
+			
+		</p:outputPanel>
+
+		<f:facet name="footer">
+		
+			<p:commandButton value="Guardar" icon="pi pi-check"
+				actionListener="#{manageUserBean.save}"
+				/>
+				
+			<p:commandButton value="Cancelar" icon="pi pi-times"
+				onclick="PF('user-form').hide()" class="ui-button-secondary" />
+				
+		</f:facet>
+		
+	</p:dialog>
+	
+</ui:composition>
